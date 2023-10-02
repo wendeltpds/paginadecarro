@@ -26,8 +26,8 @@
 
 html , body {
     width: 100%;
-    overflow-x: hidden;
     background: linear-gradient(63.14deg, rgb(163, 162, 152) , rgb(93, 94, 90));
+    scroll-behavior:smooth;
 }
 
 header {
@@ -144,11 +144,11 @@ nav ul button:hover{
 }
 
 section .filtro{
-    width: 980px;
+    max-width: 980px;
     height: 150px;
     background: var(--cinza);
+    margin: auto;
     border-radius: 8px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,17 +183,20 @@ section .filtro{
 .title-wrapper-catalog {
     margin-top: 200px;
     padding-bottom: 20px;
-    padding-left: 24.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+
 section .anuncios {
-    max-width: 1450px;
+    width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 30px;
     padding-top: 50px;
-    padding-left: 24.5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -201,14 +204,22 @@ section .anuncios {
     height: 60%;
 }
 
-section .item-anuncio {
-    height: 400px;
+.item-anuncio {
+    max-width: 500px;
+    width: 80%;
+    max-height: 500px;
+    height: 100%;
     background: var(--cinza);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.anuncios:has(.item-anuncio:hover) .item-anuncio :not(:hover)  {
+    opacity: .6;
+    scale: .90;
 }
 
 .card-content {
@@ -323,14 +334,13 @@ section .item-anuncio {
 .features-card-block {
     max-width: 1000px;
     min-width: 300px;
-    height: 600px;
+    max-height: 800px;
     background: white;
     margin: 0 auto;
     border-radius: 8px;
     z-index: 10;
     padding: 50px;
     display: grid;
-    /*grid-template-columns: repeat(auto-fill,minmax(420px, 1fr));*/
     grid-template-columns: auto auto auto;
     grid-gap: 30px;
 }
@@ -434,4 +444,126 @@ footer .ultimo {
     justify-content: center;
 
 }
+
+.menu-hamburguer {
+    position: absolute;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: #100f0f;
+    text-decoration: none;
+    height: 100vh;
+    width: 200px;
+    z-index: 11;
+    display: none;
+    animation-name: abrindomenu;
+    animation-duration: 2s;
+}
+
+@keyframes abrindomenu {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 200px;
+    }
+}
+
+.menu-hamburguer li {
+    color: transparent;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-hamburguer button {
+    margin-top: 30px;
+    width: 100%;
+
+}
+
+.menuaberto {
+    display: block;
+}
+
+.menu-fechado {
+    position: absolute;
+    right: 30px;
+    top: 60px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-fechado img {
+    width: 40px;
+}
+
+.menu-aberto {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-aberto img {
+    width: 50px;
+}
+
+@media (min-width: 800px) {
+    .item-anuncio {
+        margin-left: 20px;
+    }
+
+    .menu-hamburguer {
+        display: none;
+    }
+
+    .menu-fechado {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .features-card-block {
+        grid-template-columns: auto auto;
+    }
+
+    .features-card-item {
+        margin-bottom: 30px;
+    }
+    .conteudo-cabeçalho nav ul {
+        display: none;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .left {
+        display: none;
+    }
+
+    .right {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .right h3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .aluguel {
+        display: none;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .companhia {
+        display: none;
+    }
+}
+
 
